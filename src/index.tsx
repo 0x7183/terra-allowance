@@ -1,22 +1,14 @@
-import { getChainOptions, WalletProvider } from '@terra-money/wallet-provider';
-import { Connect } from 'components/Connect';
-import React from 'react';
 import ReactDOM from 'react-dom';
-import './style.css';
-
-function App() {
-  return (
-    <main style={{ margin: 20, display: 'flex', flexDirection: 'column', gap: 40 }} >
-      <Connect />
-    </main>
-  );
-}
+import 'app/index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import App from 'app/App';
+import {getChainOptions, WalletProvider} from '@terra-money/wallet-provider';
 
 getChainOptions().then((chainOptions) => {
-  ReactDOM.render(
-    <WalletProvider {...chainOptions}>
-      <App />
-    </WalletProvider>,
-    document.getElementById('root'),
-  );
+    ReactDOM.render(
+        <WalletProvider {...chainOptions}>
+            <App/>
+        </WalletProvider>,
+        document.getElementById('root'),
+    );
 });

@@ -1,0 +1,33 @@
+.wallet-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 0 15px 1px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    border-color: transparent;
+    justify-content: space-between;
+    background-color: #EDEDED;
+    color: #333333;
+}
+
+.wallet-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.wallet-btn span {
+    width: 100%;
+    padding: 0 15px 1px 20px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.custom-header {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}

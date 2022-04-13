@@ -1,0 +1,46 @@
+.custom-btn {
+    background-color: black !important;
+    height: 25px;
+    text-align: center;
+    width: 90px !important;
+    border-radius: 20px !important;
+    padding: 0;
+    display: inline-block;
+    line-height: 0 !important;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.custom-btn:hover {
+    opacity: 80%;
+}
+
+.custom-card {
+    color: black;
+    background-color: #F5F4F5;
+    border-radius: 15px;
+    border-color: white;
+    box-shadow: 1px 1px 2px 2px rgb(218 218 222), -1px -1px 2px #fff;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: black;
+    border-color: black;
+}
+
+.page-link:focus {
+    color: black;
+    outline: none;
+}
+
+.page-link {
+    color: black;
+}
+
+.page-link:hover {
+    color: gray;
+}
+
+.custom-header {
+    border-bottom: 1px solid #D9D9D9;
+}
