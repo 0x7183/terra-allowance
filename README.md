@@ -1,2 +1,6 @@
 # terra-allowance
-Check and remove allowance for terra smart contract
+Check and Remove Allowances for Terra CW20 Tokens.
+
+# How to
+npm install
+npm start
