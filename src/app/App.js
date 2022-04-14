@@ -24,10 +24,10 @@ function App() {
         {token: "MIR", address: "terra15gwkyepfc6xgca5t5zefzwy42uts8l2m4g40k6"}
     ]*/
     const commonToken = [
-        {token: "ANC", address: "terra14z56l0fp2lsf86zy3hty2z47ezkhnthtr9yq76"},
+        {token: "ANC", address: "terra1747mad58h0w4y589y3sk84r5efqdev9q4r02pc"},
         {token: "MINE", address: "terra1lqm5tutr5xcw9d5vc4457exa3ghd4sr9mzwdex"},
         {token: "KUJI", address: "terra1azu2frwn9a4l6gl5r39d0cuccs4h7xlu9gkmtd"},
-        {token: "bLUNA", address: "terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp"},
+        {token: "bLUNA", address: "terra1u0t35drzyy0mujj8rkdyzhe264uls4ug3wdp3x"},
         {token: "bETH", address: "terra19mkj9nec6e3y5754tlnuz4vem7lzh4n0lc2s3l"},
         {token: "bATOM", address: "terra1pw8kuxf3d7xnlsrqr39p29emwvufyr0yyjk3fg"},
         {token: "aUST", address: "terra1ajt556dpzvjwl0kl5tzku3fc3p3knkg9mkv8jl"},
