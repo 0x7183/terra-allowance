@@ -23,8 +23,16 @@ function App() {
         {token: "aUST", address: "terra1hzh9vpxhsk8253se0vv5jj6etdvxu3nv8z07zu"},
         {token: "MIR", address: "terra15gwkyepfc6xgca5t5zefzwy42uts8l2m4g40k6"}
     ]*/
-    const commonToken = [{token: "bLuna", address: "terra1747mad58h0w4y589y3sk84r5efqdev9q4r02pc"},
-                        {token: "ANC", address: "terra1747mad58h0w4y589y3sk84r5efqdev9q4r02pc"}]
+    const commonToken = [
+        {token: "ANC", address: "terra14z56l0fp2lsf86zy3hty2z47ezkhnthtr9yq76"},
+        {token: "MINE", address: "terra1lqm5tutr5xcw9d5vc4457exa3ghd4sr9mzwdex"},
+        {token: "KUJI", address: "terra1azu2frwn9a4l6gl5r39d0cuccs4h7xlu9gkmtd"},
+        {token: "bLUNA", address: "terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp"},
+        {token: "bETH", address: "terra19mkj9nec6e3y5754tlnuz4vem7lzh4n0lc2s3l"},
+        {token: "bATOM", address: "terra1pw8kuxf3d7xnlsrqr39p29emwvufyr0yyjk3fg"},
+        {token: "aUST", address: "terra1ajt556dpzvjwl0kl5tzku3fc3p3knkg9mkv8jl"},
+        {token: "MIR", address: "terra10llyp6v3j3her8u3ce66ragytu45kcmd9asj3u"}
+    ]
 
     const lcd = useLCDClient();
     const connectedWallet = useConnectedWallet()
