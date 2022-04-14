@@ -23,7 +23,7 @@ function App() {
         {token: "aUST", address: "terra1hzh9vpxhsk8253se0vv5jj6etdvxu3nv8z07zu"},
         {token: "MIR", address: "terra15gwkyepfc6xgca5t5zefzwy42uts8l2m4g40k6"}
     ]*/
-    const commonToken = [{token: "bLuna", address: "terra1u0t35drzyy0mujj8rkdyzhe264uls4ug3wdp3x"},
+    const commonToken = [{token: "bLuna", address: "terra1747mad58h0w4y589y3sk84r5efqdev9q4r02pc"},
                         {token: "ANC", address: "terra1747mad58h0w4y589y3sk84r5efqdev9q4r02pc"}]
 
     const lcd = useLCDClient();
@@ -97,10 +97,11 @@ function App() {
             </Router>
         </div>
     );
+
 }
 
 const appStyle = {
-    backgroundColor: "#EDEDED", fontFamily: "Poppins, sans-serif", fontWeight: "Bold"
+    backgroundColor: "#EDEDED", fontFamily: "Poppins, sans-serif", fontWeight: "Bold", height: "100vh"
 }
 
 export default App;
