@@ -6,7 +6,6 @@ import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-do
 import Card from "../components/Card"
 
 
-
 function App() {
     const [allowance, setAllowance] = useState([])
     const [balance, setBalance] = useState()
@@ -36,7 +35,8 @@ function App() {
                 setFetchPayments(false)
                 // Set wallet address
                 setWalletAddress(connectedWallet.walletAddress);
-                const array = [];
+                const array = []
+            
                 // Query balance address
                 lcd.bank.balance(connectedWallet.walletAddress).then(([coins]) => {
                     const balance = Number(coins.toDecCoins().get("uusd").div(1000000).toData().amount);
@@ -62,15 +62,14 @@ function App() {
                             var iter = Object.assign({}, element, r.allowances[i])
                             // Push all into array value
                             array.push(iter);
-                            
+   
                         }
-                        
-                        
-                    }).catch((error) => console.log(error)));
 
-                // setAllowance
-                setAllowance(array);
-                
+                        // This is used to trigger the rendering, but can be done better
+                        const handler = [...array];
+                        setAllowance(handler);
+
+                    }).catch((error) => console.log(error)));
 
         }
     }
