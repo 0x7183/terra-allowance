@@ -36,7 +36,7 @@ function Header({walletAddress, balanceAmount}) {
 
                     )}  
 
-                    <Nav className="col-6 justify-content-end">
+                    <Nav className="col-8 justify-content-end">
                         {status === WalletStatus.WALLET_NOT_CONNECTED && (
                             <Nav.Item>
                                 <Button className={"btn btn-dark custom-btn"} onClick={handleShow}>Connect</Button>
