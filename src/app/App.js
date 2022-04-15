@@ -4,6 +4,7 @@ import {useConnectedWallet, useLCDClient} from "@terra-money/wallet-provider"
 import HomePage from "../components/HomePage"
 import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-dom"
 import Card from "../components/Card"
+import Search from "../components/Search"
 
 
 function App() {
@@ -97,6 +98,9 @@ function App() {
                     </Route>
                     <Route path="/allowances">
                         <Card items={allowance}/>
+                    </Route>
+                    <Route path="/search">
+                        <Search/>
                     </Route>
                     <Route>
                         <Redirect to="/home"/>

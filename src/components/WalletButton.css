@@ -1,22 +1,26 @@
 .custom-btn-wallet {
-    background-color: black !important;
-    border-radius: 15px !important;
+    background-color: #EDEDED!important;
+    border-color: black !important;
     height: 35px !important;
-    font-size: 14px !important;
+    font-size: 12px !important;
     font-weight: bold;
+    border-radius: 35px !important;
 }
 
 .coin-type {
     margin-left: 2px;
     font-weight: bold;
+    color: black;
 }
 
 .balance-amount {
     margin-left: 10px;
     font-weight: bold;
+    color: black
 }
 
 .divider {
     margin-left: 10px;
     font-size: 16px;
+    color: black;
 }

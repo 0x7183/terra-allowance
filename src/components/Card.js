@@ -9,6 +9,7 @@ const CustomCard = ({items}) => {
     const lastPage = Math.floor(items.length / itemsPerPage + 1)
     const [currentPage, setCurrentPage] = useState(1)
     let currentItems = items.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+    console.log(items)
     
     function goToFirstPage() {
         setCurrentPage(1)

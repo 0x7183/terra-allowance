@@ -21,6 +21,7 @@ function Header({walletAddress, balanceAmount}) {
                 <Navbar.Brand href="/">
                     Terra Allowances
                 </Navbar.Brand>
+
                 <Navbar.Collapse>
                     {status === WalletStatus.WALLET_NOT_CONNECTED && (
                         <Nav className="col-4"/>
@@ -30,10 +31,12 @@ function Header({walletAddress, balanceAmount}) {
                         <Nav className="col-4">
                             <Nav.Link href="/home">Home</Nav.Link>
                             <Nav.Link href="/allowances">Allowances</Nav.Link>
+                            <Nav.Link href="/search">Search</Nav.Link>
                         </Nav>
-                    )}
 
-                    <Nav className="col-8 justify-content-end">
+                    )}  
+
+                    <Nav className="col-6 justify-content-end">
                         {status === WalletStatus.WALLET_NOT_CONNECTED && (
                             <Nav.Item>
                                 <Button className={"btn btn-dark custom-btn"} onClick={handleShow}>Connect</Button>
@@ -48,7 +51,9 @@ function Header({walletAddress, balanceAmount}) {
                             </Nav.Item>)
                         }
                     </Nav>
+                    
                 </Navbar.Collapse>
+
 
                 <Modal size="sm" show={show} onHide={handleClose} centered>
                     <Modal.Header>
@@ -67,7 +72,9 @@ function Header({walletAddress, balanceAmount}) {
                         }
                     </Modal.Body>
                 </Modal>
+
             </Container>
+
         </Navbar>
     );
 }

@@ -31,3 +31,8 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+.no-border {
+    border: 0;
+    box-shadow: none;
+}
