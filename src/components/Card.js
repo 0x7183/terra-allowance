@@ -3,6 +3,7 @@ import './Card.css';
 import PropTypes from "prop-types";
 import truncateAddress from "./Utility";
 import {useState} from "react";
+import {revokeAllowance} from "./RevokeAllowance";
 
 const CustomCard = ({items}) => {
     const itemsPerPage = 10
@@ -53,7 +54,7 @@ const CustomCard = ({items}) => {
             <td className={"col-4 text-center"}>{item.allowance / 1000000}</td>
             <td className={"col-4 text-center"}>{item.expires}</td>
             <td className={"col-4 text-center"}>
-            <button className={"custom-btn text-white"}>Revoke</button>
+            <button className={"custom-btn text-white"} onClick={() => {revokeAllowance(item.address, item.spender)}}>Revoke</button>
             </td>
             
             </tr>))
