@@ -5,3 +5,12 @@
     margin-bottom:70px;
     
 }
+
+.custom-btn-search {
+    background-color: black !important;
+    border-color: black !important;
+    height: 35px !important;
+    font-size: 14px !important;
+    font-weight: bold;
+    border-radius: 35px !important;
+}

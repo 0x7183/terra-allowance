@@ -3,14 +3,13 @@ import './Card.css';
 import PropTypes from "prop-types";
 import truncateAddress from "./Utility";
 import {useState} from "react";
-import {revokeAllowance} from "./RevokeAllowance";
+import revokeAllowance from "./RevokeAllowance";
 
 const CustomCard = ({items}) => {
     const itemsPerPage = 10
     const lastPage = Math.floor(items.length / itemsPerPage + 1)
     const [currentPage, setCurrentPage] = useState(1)
     let currentItems = items.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-    console.log(items)
     
     function goToFirstPage() {
         setCurrentPage(1)
@@ -32,10 +31,9 @@ const CustomCard = ({items}) => {
         <Container className={"mt-4 col-6"}>
         
         <>
-        <h1 className="text-center mt-5">Terra Allowances</h1>
-        <Card.Title className="text-center mt-3">Here's a list of your tokens allowance.</Card.Title>
         <Card className={"custom-card mt-5"}>
         <Card.Body>
+        <div class="table-responsive">
         <Table borderless={true}>
         <thead className={"custom-header"}>
         <tr className={"col-12"}>
@@ -54,13 +52,14 @@ const CustomCard = ({items}) => {
             <td className={"col-4 text-center"}>{item.allowance / 1000000}</td>
             <td className={"col-4 text-center"}>{item.expires}</td>
             <td className={"col-4 text-center"}>
-            <button className={"custom-btn text-white"} onClick={() => {revokeAllowance(item.address, item.spender)}}>Revoke</button>
+            <button className={"custom-btn text-white"} onClick={() => revokeAllowance(item.address)}>Revoke</button>
             </td>
             
             </tr>))
         }
         </tbody>
         </Table>
+        </div>
         </Card.Body>
         </Card>
         </>
