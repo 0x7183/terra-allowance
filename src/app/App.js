@@ -6,7 +6,6 @@ import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-do
 import Card from "../components/Card"
 import Search from "../components/Search"
 
-
 function App() {
     const [allowance, setAllowance] = useState([])
     const [balance, setBalance] = useState()
@@ -81,7 +80,6 @@ function App() {
 
     }, [fetchPayments, connectedWallet, lcd, allowance]);
 
-
     return (
         <div style={appStyle} className='App'>
             <Header walletAddress={walletAddress} balanceAmount={balance}/>
@@ -91,8 +89,7 @@ function App() {
                         <HomePage/>
                     </Route>
                     <Route path="/allowances">
-                    <h1 className="text-center mt-5">Terra Allowances</h1>
-                    <h5 className="text-center mt-3">Here's a list of your tokens allowance.</h5>
+                    
                         <Card items={allowance}/>
                     </Route>
                     <Route path="/search">
