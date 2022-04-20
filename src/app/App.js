@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-do
 import Card from "../components/Card"
 import Search from "../components/Search"
 
+
 function App() {
     const [allowance, setAllowance] = useState([])
     const [balance, setBalance] = useState()
@@ -38,47 +39,48 @@ function App() {
     const connectedWallet = useConnectedWallet()
 
     useEffect(() => {
-        const getAllowance = async () => {
-            if (connectedWallet) {
-              setFetchPayments(false);
-              // Set wallet address
-              setWalletAddress(connectedWallet.walletAddress);
-              const array = [];
-      
-              // Query balance address
-              lcd.bank
-                .balance(connectedWallet.walletAddress)
-                .then(([coins]) => {
-                  const balance = Number(coins.toDecCoins().get('uusd').div(1000000).toData().amount);
-                  setBalance(balance.toLocaleString());
-                })
-                .catch((error) => console.log(error));
-      
-              // For each token in the list query allowances
-              const promises = commonToken.map(async (element) => {
-                const r = await lcd.wasm
-                  .contractQuery(element.address, {
-                    all_allowances: {
-                      owner: connectedWallet.walletAddress,
-                    },
-                  })
-                  .catch((error) => console.log(error));
-      
-                // For each allowances make a dictonary with token name, address and allowance
-                r.allowances.forEach((allowance) => {
-                  const expires = allowance.expires?.never ? 'never' : allowance.expires.at_height;
-                  const iter = {...element, ...allowance, expires};
-                  array.push(iter);
-                })
-              });
-              await Promise.all(promises);
-              setAllowance(array);
-            }
-          };
+ const getAllowance = async () => {
+      if (connectedWallet) {
+        setFetchPayments(false);
+        // Set wallet address
+        setWalletAddress(connectedWallet.walletAddress);
+        const array = [];
+
+        // Query balance address
+        lcd.bank
+          .balance(connectedWallet.walletAddress)
+          .then(([coins]) => {
+            const balance = Number(coins.toDecCoins().get('uusd').div(1000000).toData().amount);
+            setBalance(balance.toLocaleString());
+          })
+          .catch((error) => console.log(error));
+
+        // For each token in the list query allowances
+        const promises = commonToken.map(async (element) => {
+          const r = await lcd.wasm
+            .contractQuery(element.address, {
+              all_allowances: {
+                owner: connectedWallet.walletAddress,
+              },
+            })
+            .catch((error) => console.log(error));
+
+          // For each allowances make a dictonary with token name, address and allowance
+          r.allowances.forEach((allowance) => {
+            const expires = allowance.expires?.never ? 'never' : allowance.expires.at_height;
+            const iter = {...element, ...allowance, expires};
+            array.push(iter);
+          })
+        });
+        await Promise.all(promises);
+        setAllowance(array);
+      }
+    };
 
         fetchPayments && getAllowance()
 
     }, [fetchPayments, connectedWallet, lcd, allowance]);
+
 
     return (
         <div style={appStyle} className='App'>
@@ -89,7 +91,8 @@ function App() {
                         <HomePage/>
                     </Route>
                     <Route path="/allowances">
-                    
+                    <h1 className="text-center mt-5">Terra Allowances</h1>
+                    <h5 className="text-center mt-3">Here's a list of your tokens allowance.</h5>
                         <Card items={allowance}/>
                     </Route>
                     <Route path="/search">
