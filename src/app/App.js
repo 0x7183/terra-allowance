@@ -41,47 +41,41 @@ function App() {
     useEffect(() => {
         const getAllowance = async () => {
             if (connectedWallet) {
-                setFetchPayments(false)
-                // Set wallet address
-                setWalletAddress(connectedWallet.walletAddress);
-                const array = []
-            
-                // Query balance address
-                lcd.bank.balance(connectedWallet.walletAddress).then(([coins]) => {
-                    const balance = Number(coins.toDecCoins().get("uusd").div(1000000).toData().amount);
-                    setBalance(balance.toLocaleString());
-                }).catch((error) => console.log(error));
-
-                // For each token in the list query allowances
-                commonToken.forEach(element =>
-                    lcd.wasm.contractQuery(element.address, {
-                        all_allowances: {
-                            owner: connectedWallet.walletAddress
-                        }
-                    }).then((r) => {
-                        // For each allowances make a dictonary with token name, address and allowance
-                        for (let i = 0; i < r.allowances.length;  i++){
-                            let expire = r.allowances[i].expires[Object.keys(r.allowances[i].expires)];
-                            // If expire is not a number then there is no expire set
-                            if (isNaN(expire)){
-                                expire = "never";
-                            }
-                            // Set expires
-                            r.allowances[i].expires = expire;
-                            var iter = Object.assign({}, element, r.allowances[i])
-                            // Push all into array value
-                            array.push(iter);
-   
-                        }
-
-                        // This is used to trigger the rendering, but can be done better
-                        const handler = [...array];
-                        setAllowance(handler);
-
-                    }).catch((error) => console.log(error)));
-
-        }
-    }
+              setFetchPayments(false);
+              // Set wallet address
+              setWalletAddress(connectedWallet.walletAddress);
+              const array = [];
+      
+              // Query balance address
+              lcd.bank
+                .balance(connectedWallet.walletAddress)
+                .then(([coins]) => {
+                  const balance = Number(coins.toDecCoins().get('uusd').div(1000000).toData().amount);
+                  setBalance(balance.toLocaleString());
+                })
+                .catch((error) => console.log(error));
+      
+              // For each token in the list query allowances
+              const promises = commonToken.map(async (element) => {
+                const r = await lcd.wasm
+                  .contractQuery(element.address, {
+                    all_allowances: {
+                      owner: connectedWallet.walletAddress,
+                    },
+                  })
+                  .catch((error) => console.log(error));
+      
+                // For each allowances make a dictonary with token name, address and allowance
+                r.allowances.forEach((allowance) => {
+                  const expires = allowance.expires?.never ? 'never' : allowance.expires.at_height;
+                  const iter = {...element, ...allowance, expires};
+                  array.push(iter);
+                })
+              });
+              await Promise.all(promises);
+              setAllowance(array);
+            }
+          };
 
         fetchPayments && getAllowance()
 
