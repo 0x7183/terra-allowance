@@ -13,16 +13,16 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/{**/*,*}/*.{ts,tsx}": [
+    "src/{/,}/*.{ts,tsx}": [
       "cross-env CI=true react-scripts test --colors --findRelatedTests"
     ]
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.ts?(x)",
-      "!**/*.d.ts?(x)",
-      "!**/*.stories.ts?(x)",
-      "!**/__*__/**"
+      "src//.ts?(x)",
+      "!**/.d.ts?(x)",
+      "!/*.stories.ts?(x)",
+      "!/*/**"
     ]
   },
   "browserslist": {
@@ -38,7 +38,10 @@
     ]
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@material-ui/core": "^4.12.4",
+    "@mui/material": "^5.6.3",
     "@terra-money/terra.js": "^3.0.2",
     "@terra-money/wallet-provider": "^3.6.5",
     "bootstrap": "^5.1.3",
