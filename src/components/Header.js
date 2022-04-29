@@ -2,11 +2,30 @@ import {Button, Container, Modal, Nav, Navbar} from "react-bootstrap";
 import './Header.css';
 import {useState} from "react";
 import {useWallet, WalletStatus} from '@terra-money/wallet-provider';
-import WalletButton from "./WalletButton";
 import './WalletButton.css';
 import {Link} from "react-router-dom";
+import truncateAddress from "./Utility";
 
 function Header({walletAddress, balanceAmount}) {
+
+    
+
+    const WalletButton = ({walletAddress, balanceAmount, coinType, onClick}) => {
+        return (
+            <button className={"btn btn-dark custom-btn-wallet"}
+                    onClick={onClick}>
+                <span className ={"balance-amount"}>{truncateAddress(walletAddress)}</span>
+                <span className={"divider"}>|</span>
+                <span className={"balance-amount"}>{balanceAmount}</span>
+                <span className={"coin-type"}>{coinType}</span>
+            </button>
+        );
+    }
+
+    WalletButton.defaultProps = {
+        walletAddress: "", balanceAmount: 0
+    }
+
     const {
         status, availableConnections, connect, disconnect,
     } = useWallet();
