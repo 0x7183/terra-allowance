@@ -6,6 +6,9 @@ import truncateAddress from "../Utility";
 
 export function WaitDialog({show, onHide, loading, result, error}) {
 
+    const refreshPage = () => {
+        window.location.reload();
+    }
     
     const [showing, setShowing] = useState(true)
 
@@ -46,11 +49,12 @@ export function WaitDialog({show, onHide, loading, result, error}) {
                     Tx Hash
                 </div>
                 <div className={"col-4"}>
-                    <a href={"https://terrasco.pe/testnett/tx/" + result.txHash}>{truncateAddress(result.txHash)}</a>
+                    <a href={"https://terrasco.pe/testnett/tx/" + result.txHash} target="_blank">{truncateAddress(result.txHash)}</a>
                 </div>
             </div>
             <Button variant={"contained"} className={"col-12 p-2 mt-3 button text-white"} onClick={() => {
                 setShowing(false)
+                refreshPage()
             }}>Ok</Button>
         </Modal.Body>
     </Modal>
