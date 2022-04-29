@@ -1,0 +1,13 @@
+.custom-modal {
+    font-size: 12px;
+    padding: 20px;
+}
+
+.button {
+    background-color: black !important;
+}
+
+.button:hover {
+    opacity: 80%;
+    transition: linear 0.2s;
+}

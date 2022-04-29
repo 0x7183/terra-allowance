@@ -1,3 +1,8 @@
+a {
+    color: black;
+    text-decoration: none;
+}
+
 .custom-btn {
     background-color: black !important;
     height: 25px;

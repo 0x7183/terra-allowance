@@ -4,6 +4,7 @@ import {useState} from "react";
 import {useWallet, WalletStatus} from '@terra-money/wallet-provider';
 import WalletButton from "./WalletButton";
 import './WalletButton.css';
+import {Link} from "react-router-dom";
 
 function Header({walletAddress, balanceAmount}) {
     const {
@@ -29,9 +30,9 @@ function Header({walletAddress, balanceAmount}) {
 
                     {status === WalletStatus.WALLET_CONNECTED && (
                         <Nav className="col-4">
-                            <Nav.Link href="/home">Home</Nav.Link>
-                            <Nav.Link href="/allowances">Allowances</Nav.Link>
-                            <Nav.Link href="/search">Search</Nav.Link>
+                            <Link to="/home" className={"nav-link"}>Home</Link>
+                            <Link to="/allowances" className={"nav-link"}>Allowances</Link>
+                            <Link to="/search" className={"nav-link"}>Search</Link>
                         </Nav>
 
                     )}  

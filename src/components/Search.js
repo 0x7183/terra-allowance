@@ -6,7 +6,6 @@ import {useConnectedWallet, useLCDClient} from "@terra-money/wallet-provider"
 import Card from "./Card"
 
 
-
 function Search() {
 
     const [allowance, setAllowance] = useState([])
@@ -14,6 +13,7 @@ function Search() {
 
     const lcd = useLCDClient();
     const connectedWallet = useConnectedWallet()
+    const [loadingAllowance, setLoadingAllowance] = useState(true)
 
     function getAllowance(value) {
 
@@ -42,6 +42,7 @@ function Search() {
                     }
                     
                     setAllowance(array);
+                    setLoadingAllowance(false);
 
                 }).catch((error) => console.log(error));
 
@@ -80,7 +81,7 @@ function Search() {
         </Container><Container className={"mt-4 col-12"}>
 
 
-                <Card items={allowance} />
+                <Card items={allowance} loadingCard = {loadingAllowance} />
 
             </Container></>
         
