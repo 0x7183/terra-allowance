@@ -19,8 +19,7 @@ function App() {
     const [fetchPayments, setFetchPayments] = useState(true)
     const [loadingAllowance, setLoadingAllowance] = useState(true)
 
-/*
-    const commonToken = [
+    const mainnetCommonToken = [
         {token: "ANC", address: "terra14z56l0fp2lsf86zy3hty2z47ezkhnthtr9yq76"},
         {token: "MINE", address: "terra1kcthelkax4j9x8d3ny6sdag0qmxxynl3qtcrpy"},
         {token: "KUJI", address: "terra1xfsdgcemqwxp4hhnyk4rle6wr22sseq7j07dnn"},
@@ -30,8 +29,9 @@ function App() {
         {token: "LunaX", address: "terra17y9qkl8dfkeg4py7n0g5407emqnemc3yqk5rup"},
         {token: "aUST", address: "terra1hzh9vpxhsk8253se0vv5jj6etdvxu3nv8z07zu"},
         {token: "MIR", address: "terra15gwkyepfc6xgca5t5zefzwy42uts8l2m4g40k6"}
-    ]*/
-    const commonToken = [
+    ]
+
+    const testnetCommonToken = [
         {token: "ANC", address: "terra1747mad58h0w4y589y3sk84r5efqdev9q4r02pc"},
         {token: "MINE", address: "terra1lqm5tutr5xcw9d5vc4457exa3ghd4sr9mzwdex"},
         {token: "KUJI", address: "terra1azu2frwn9a4l6gl5r39d0cuccs4h7xlu9gkmtd"},
@@ -41,6 +41,8 @@ function App() {
         {token: "aUST", address: "terra1ajt556dpzvjwl0kl5tzku3fc3p3knkg9mkv8jl"},
         {token: "MIR", address: "terra10llyp6v3j3her8u3ce66ragytu45kcmd9asj3u"}
     ]
+
+    var commonToken = []
 
     const lcd = useLCDClient();
     const connectedWallet = useConnectedWallet()
@@ -52,6 +54,14 @@ function App() {
               // Set wallet address
               setWalletAddress(connectedWallet.walletAddress);
               const array = [];
+
+              // Check network
+              if (connectedWallet.network.chainID.startsWith('columbus')) {
+                commonToken = mainnetCommonToken
+              }
+              else {
+                commonToken = testnetCommonToken
+              }
 
               // Query balance address
               lcd.bank

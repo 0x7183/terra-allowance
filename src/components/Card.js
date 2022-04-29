@@ -56,11 +56,11 @@ const CustomCard = ({items, loadingCard}) => {
             (<tr key={item.id} className={"col-12"}>
                 <td className={"col-2"}>{item.token}</td>
                 <td className={"col-4 text-center"}>
-                    <a href={"https://terrasco.pe/mainnet/address/" + item.spender}>{truncateAddress(item.spender)}</a>
+                    <a href={"https://terrasco.pe/mainnet/address/" + item.spender} target="_blank">{truncateAddress(item.spender)}</a>
                 </td>
                 <td className={"col-2 text-center"}>{item.allowance / 1000000}</td>
                 <td className={"col-4 text-center"}> 
-                    <a href = {"https://terrasco.pe/mainnet/blocks/" + item.expires}>{item.expires}</a>
+                    <a href = {"https://terrasco.pe/mainnet/blocks/" + item.expires} target="_blank">{item.expires}</a>
                 </td>
                 <td className={"col-4 text-center"}>
                     <button className={"custom-btn text-white"} onClick={() => {
